@@ -6,7 +6,7 @@
 [Unit]
 Description=Podman  beszel-app.service
 BindsTo=beszel.service
-After=beszel.service postgresql-app.service
+After=beszel.service
 
 [Service]
 Environment=PODMAN_SYSTEMD_UNIT=%n
@@ -15,17 +15,13 @@ EnvironmentFile=-%S/state/smarthost.env
 WorkingDirectory=%S/state
 Restart=always
 TimeoutStopSec=70
-ExecStartPre=/bin/mkdir -p config
 ExecStartPre=/bin/rm -f %t/beszel-app.pid %t/beszel-app.ctr-id
 ExecStartPre=-runagent discover-smarthost
 ExecStart=/usr/bin/podman run --conmon-pidfile %t/beszel-app.pid \
     --cidfile %t/beszel-app.ctr-id --cgroups=no-conmon \
     --pod-id-file %t/beszel.pod-id --replace -d --name  beszel-app \
-    --volume beszel-app:/var/www/html/:Z \
-    --volume ./config:/tmp:Z \
-    --env=NGINX_* \
-    --env 'CONFIG_DATABASE_URI="postgresql://postgres:Nethesis,1234@127.0.0.1:5432/beszel"' \
-    ${NGINX_IMAGE}
+    --volume beszel-data:/beszel_data:Z \
+    ${BESZEL_IMAGE}
 ExecStop=/usr/bin/podman stop --ignore --cidfile %t/beszel-app.ctr-id -t 10
 ExecReload=/usr/bin/podman kill -s HUP beszel-app
 SyslogIdentifier=%u

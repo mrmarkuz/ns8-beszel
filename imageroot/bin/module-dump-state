@@ -5,7 +5,7 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 #
 
-set -e
+#set -e
 
-echo "Dumping beszel postgres database"
-podman exec postgresql-app pg_dump -U postgres --format=c  beszel > beszel.pg_dump
+#echo "Dumping beszel postgres database"
+#podman exec postgresql-app pg_dump -U postgres --format=c  beszel > beszel.pg_dump
