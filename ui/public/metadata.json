@@ -1,19 +1,19 @@
 {
-  "name": "beszel",
+  "name": "Beszel",
   "description": {
-    "en": "My beszel module"
+    "en": "Beszel is a simple, lightweight server monitoring tool."
   },
-  "categories": [],
+  "categories": ["monitoring"],
   "authors": [
     {
-      "name": "Name Surname",
-      "email": "author@yourmail.org"
+      "name": "Markus Neuberger",
+      "email": "dev@markusneuberger.at"
     }
   ],
   "docs": {
-    "documentation_url": "https://docs.beszel.com/",
-    "bug_url": "https://github.com/NethServer/dev",
-    "code_url": "https://github.com/author/ns8-beszel"
+    "documentation_url": "https://beszel.dev/guide/what-is-beszel",
+    "bug_url": "https://community.nethserver.org",
+    "code_url": "https://github.com/mrmarkuz/ns8-beszel"
   },
   "source": "ghcr.io/nethserver/beszel"
 }
