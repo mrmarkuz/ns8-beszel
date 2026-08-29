@@ -46,7 +46,7 @@ buildah config --entrypoint=/ \
     --label="org.nethserver.tcp-ports-demand=1" \
     --label="org.nethserver.rootfull=0" \
     --label="org.nethserver.min-core=3.12.4-0" \
-    --label="org.nethserver.images=docker.io/henrygd/beszel:0.18.3" \
+    --label="org.nethserver.images=docker.io/henrygd/beszel:0.18.8" \
     "${container}"
 # Commit the image
 buildah commit "${container}" "${repobase}/${reponame}"
